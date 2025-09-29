@@ -34,7 +34,11 @@ body {
         margin: 0;
         padding: 0; 
         z-index: 10;
-        zoom: 1.5;
+    }
+    body {
+        overflow-x: hidden; /* 가로 스크롤이 생기지 않도록 방지 */
+        position: center; /* 화면 중앙에 고정 */
+        zoom: 120%; /* 화면 확대 (필요에 따라 조정 가능) */
     }
     /* ===== ▼▼▼ 모바일 전용 글자 크기 조절 ▼▼▼ ===== */
 
