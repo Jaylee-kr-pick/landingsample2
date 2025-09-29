@@ -1,4 +1,7 @@
-/* 기본 리셋 스타일 */
+/* ========================================
+   1. 기본 스타일 (리셋 및 공통)
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +10,7 @@
 
 html {
     font-size: 16px;
-    scroll-behavior: smooth; /* 부드러운 스크롤 효과 추가 */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -17,8 +20,6 @@ body {
     line-height: 1.6;
 }
 
-/* 유틸리티 클래스 */
-/* 유틸리티 클래스 */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -26,43 +27,30 @@ body {
     padding: 1rem 0;
 }
 
-/* 화면이 768px 이하일 경우(모바일) 여백 제거 */
-@media (max-width: 750px) {
-    .container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0; 
-        z-index: 10;
-        height: 50%;
-    }
-    body {
-        overflow-x: hidden; /* 가로 스크롤이 생기지 않도록 방지 */
-        position: center; /* 화면 중앙에 고정 */
-        zoom: 120%; /* 화면 확대 (필요에 따라 조정 가능) */
-    }
-    /* ===== ▼▼▼ 모바일 전용 글자 크기 조절 ▼▼▼ ===== */
+/* ========================================
+   2. 반응형 이미지 기본 설정 (수정)
+======================================== */
 
-
-    /* 헤더 메뉴 글자 크기 줄이기 */
-    .gnb a {
-        font-size: 0.5rem; /* 예시: 1rem -> 0.9rem */
-    }
-
-    /* '문의하기' 제목 글자 크기 줄이기 */
-    .contact-card h3 {
-        font-size: 1.8rem; /* 예시: 2rem -> 1.8rem */
-    }
-
-    /* '문의하기' 설명 글자 크기 줄이기 */
-    .contact-card p {
-        font-size: 0.9rem; /* 예시: 1rem -> 0.9rem */
-    }
-
-    /* ===== ▲▲▲ 여기까지 ▲▲▲ ===== */
+/* 평소(데스크톱)에는 mobile-only 클래스를 가진 모든 요소를 숨깁니다. */
+.mobile-only {
+    display: none;
 }
 
-/* 헤더 스타일 */
+/* 평소(데스크톱)에는 desktop-only 클래스를 가진 모든 요소를 보여줍니다. */
+.desktop-only {
+    display: block;
+}
+
+/* 이미지 태그는 기본적으로 block 요소로 처리 */
+.section-image {
+    display: block;
+}
+
+
+/* ========================================
+   3. 헤더 (Header)
+======================================== */
+
 .header {
     background-color: #1B1B1B;
     border-bottom: 1px solid #333;
@@ -77,8 +65,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px; 
-    overflow: hidden;
+    height: 50px;
+}
+
+.logo {
+    margin: 0; /* h1 태그의 기본 마진 제거 */
 }
 
 .logo a {
@@ -86,6 +77,8 @@ body {
     font-weight: bold;
     color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center; /* 로고 텍스트 수직 중앙 정렬 */
 }
 
 .gnb ul {
@@ -105,175 +98,140 @@ body {
     color: #007bff;
 }
 
-/* ===== ▼▼▼ 수정된 부분 ▼▼▼ ===== */
+/* ========================================
+   4. 메인 콘텐츠 (Main Content)
+======================================== */
+
 .main-content {
-    /* 고정된 헤더의 높이(50px) + 여유 공간(20px) 만큼 상단 패딩을 주어 콘텐츠가 가려지는 것을 방지합니다. */
-    padding-top: 30px;
-}
-/* ===== ▲▲▲ 수정된 부분 ▲▲▲ ===== */
-
-
-/* 이미지 섹션 공통 스타일 */
-.image-section .container {
-    /* 이미지 섹션 자체의 패딩은 제거하여 이미지가 container 너비에 맞게 표시되도록 합니다. */
-    padding: 0rem 0rem; 
-    text-align: center;
+    padding-top: 70px; /* 고정된 헤더 높이(50px) + 여유 공간(20px) */
 }
 
-/* 이미지 섹션 공통 스타일 */
 .image-section {
+    position: relative;
     width: 100%;
-    /* 1. 이 부모 요소가 position: absolute를 사용하는 자식 요소의 기준이 됩니다. */
-    position: relative; 
-    /* 이미지 높이에 따라 섹션 높이가 결정되도록 높이 속성은 제거합니다. */
     height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* 이미지 자체에 대한 스타일 */
 .section-image {
-    width: 100%; /* 이미지가 섹션 너비에 맞게 조정됩니다. */
-    height: auto; /* 이미지 비율을 유지합니다. */
-    display: block; /* 이미지 주변의 불필요한 공백을 제거합니다. */
-    margin: 0 auto; /* 이미지를 수평 중앙에 배치합니다. */
+    width: 100%;
+    height: auto;
+    display: block;
 }
-/* 이미지 배너 공통 스타일 */
-.image-banner img{
-    width: 100%; /* 배너 버튼의 가로 크기 */
-    /* 3. 부모 요소(.image-section)를 기준으로 위치를 지정합니다. */
-    position: absolute; 
-    z-index: 100; 
-    transition: transform 0.2s;
-}
-/* 이미지 버튼 공통 스타일 */
-.image-button1 img, .image-button2 img{
-    /* 3. 부모 요소(.image-section)를 기준으로 위치를 지정합니다. */
-    position: absolute; 
-    z-index: 100; 
+
+/* --- 버튼 공통 스타일 --- */
+.image-banner, .image-button1, .image-button2 {
+    position: absolute;
+    z-index: 10;
     transition: transform 0.2s;
 }
 
+.image-banner img, .image-button1 img, .image-button2 img {
+    display: block;
+    width: 100%; /* a 태그가 아닌 img 태그에 너비를 줘야합니다. */
+}
 
-/* --- ▼ 개별 버튼 위치 지정 (예시) ▼ --- */
-
-/* ID가 section02인 섹션 안의 버튼 */
-#section02 .image-banner img{
-    width: 100%; /* section02 버튼의 가로 크기 */
-        /* 1. 부모의 정중앙 좌표(50%, 50%)로 이동 */
+/* --- 개별 버튼 위치 (데스크톱 기준) --- */
+#section02 .image-banner {
+    width: 100%;
     top: 92%;
     left: 50%;
-    
-    /* 2. 요소의 크기만큼 다시 밀어서 완벽한 중앙에 위치 */
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-/* ID가 section02인 섹션 안의 버튼 */
-#section03 .image-button1 img{
-    width: 32.2%; /* section02 버튼의 가로 크기 */
-        /* 1. 부모의 정중앙 좌표(50%, 50%)로 이동 */
+#section03 .image-button1 {
+    width: 32.2%;
     top: 65.3%;
     left: 32.6%;
-    
-    /* 2. 요소의 크기만큼 다시 밀어서 완벽한 중앙에 위치 */
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-/* ID가 section02인 섹션 안의 버튼 */
-#section03 .image-button2 img{
-    width: 32.2%; /* section02 버튼의 가로 크기 */
-        /* 1. 부모의 정중앙 좌표(50%, 50%)로 이동 */
+#section03 .image-button2 {
+    width: 32.2%;
     top: 65.3%;
     left: 67.4%;
-    
-    /* 2. 요소의 크기만큼 다시 밀어서 완벽한 중앙에 위치 */
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-/* 문의 폼 섹션 스타일 */
-.contact-section-card {
-    background-color: #1B1B1B;
-    padding: 5rem 0;
-    color: #fff;
-    text-align: center;
-}
+/* ========================================
+   5. 푸터 (Footer)
+======================================== */
 
-.contact-card {
-    background-color: #2c2c2c;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.contact-card h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #fff;
-}
-
-.contact-card p {
-    font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    font-size: 1rem;
-}
-
-.form-group input::placeholder {
-    color: #888;
-}
-
-.cta-button {
-    width: 100%;
-    padding: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, opacity 0.3s;
-}
-
-.cta-button:hover {
-    background-color: #0056b3;
-}
-
-/* 푸터 스타일 */
 .footer {
     background-color: #111;
     color: #888;
     text-align: center;
     padding: 2rem 0;
 }
-/* ===== ▼▼▼ 스크롤 애니메이션 효과 ▼▼▼ ===== */
 
-/* 초기 상태: 요소를 아래로 50px 이동시키고 투명하게 만듭니다. */
+/* ========================================
+   6. 스크롤 애니메이션
+======================================== */
+
 .hidden {
     opacity: 0;
     transform: translateY(50px);
-    transition: all 0.7s ease-out; /* 0.7초 동안 부드럽게 변화하도록 설정 */
+    transition: all 0.7s ease-out;
 }
 
-/* 활성화 상태: 요소를 원래 위치로 이동시키고 완전히 보이게 합니다. */
 .visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+/* =============================================================
+   7. 모바일 반응형 스타일 (화면 너비 768px 이하)
+============================================================= */
+
+@media (max-width: 768px) {
+
+    /* --- 레이아웃 조정 --- */
+    .container {
+        width: 95%;
+    }
+
+    .header .container {
+        height: 40px;
+    }
+
+    .main-content {
+        padding-top: 50px; /* 모바일 헤더 높이에 맞게 조정 */
+    }
+
+    /* --- 글자 크기 조정 --- */
+    .gnb a {
+        font-size: 0.8rem;
+    }
+
+    /* --- ★★★ 반응형 요소 교체 (수정) ★★★ --- */
+    .desktop-only {
+        display: none; /* 데스크톱용 요소는 모두 숨김 */
+    }
+    .mobile-only {
+        display: block; /* 모바일용 요소는 모두 보여줌 */
+    }
+
+    /* --- 모바일 버튼 위치 재조정 --- */
+    /* 모바일용 이미지와 버튼에 맞게 좌표를 다시 설정해야 합니다. */
+    
+    #section02 .image-banner.mobile-only {
+        width: 100%;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #section03 .image-button1.mobile-only {
+        width: 48%; 
+        top: 65%;
+        left: 24%;
+        transform: translate(-50%, -50%); /* 중앙 정렬을 위해 추가 */
+    }
+    
+    #section03 .image-button2.mobile-only {
+        width: 48%;
+        top: 65%;
+        left: 74%;
+        transform: translate(-50%, -50%); /* 중앙 정렬을 위해 추가 */
+    }
 }
