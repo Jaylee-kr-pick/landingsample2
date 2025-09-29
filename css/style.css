@@ -32,13 +32,9 @@ body {
         width: 100%;
         max-width: 100%;
         margin: 0;
-        padding: 0;
+        padding: 0; 
         z-index: 10;
-    }
-    body {
-        min-width: 750px;
-        overflow-x: hidden; /* 가로 스크롤이 생기지 않도록 방지 */
-        position: center; /* 화면 중앙에 고정 */
+        zoom: 1.5;
     }
     /* ===== ▼▼▼ 모바일 전용 글자 크기 조절 ▼▼▼ ===== */
 
