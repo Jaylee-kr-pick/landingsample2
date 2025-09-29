@@ -28,22 +28,22 @@ body {
 }
 
 /* ========================================
-   2. 반응형 이미지 기본 설정 (수정)
+   2. 반응형 요소 기본 설정 (최종 수정)
 ======================================== */
 
-/* 평소(데스크톱)에는 mobile-only 클래스를 가진 모든 요소를 숨깁니다. */
-.mobile-only {
-    display: none;
-}
+/* --- 평소(데스크톱) 상태 --- */
 
-/* 평소(데스크톱)에는 desktop-only 클래스를 가진 모든 요소를 보여줍니다. */
+/* 데스크톱용 요소는 보여줍니다. */
 .desktop-only {
     display: block;
 }
 
-/* 이미지 태그는 기본적으로 block 요소로 처리 */
-.section-image {
-    display: block;
+/* 모바일용 요소는 종류별로 명확하게 지정해서 확실하게 숨깁니다. */
+.section-image.mobile-only,
+.image-banner.mobile-only,
+.image-button1.mobile-only,
+.image-button2.mobile-only {
+    display: none;
 }
 
 
@@ -103,7 +103,7 @@ body {
 ======================================== */
 
 .main-content {
-    padding-top: 70px; /* 고정된 헤더 높이(50px) + 여유 공간(20px) */
+    padding-top: 50px; /* 고정된 헤더 높이(50px) + 여유 공간(20px) */
 }
 
 .image-section {
@@ -195,7 +195,7 @@ body {
     }
 
     .main-content {
-        padding-top: 50px; /* 모바일 헤더 높이에 맞게 조정 */
+        padding-top: 40px; /* 모바일 헤더 높이에 맞게 조정 */
     }
 
     /* --- 글자 크기 조정 --- */
@@ -203,12 +203,17 @@ body {
         font-size: 0.8rem;
     }
 
-    /* --- ★★★ 반응형 요소 교체 (수정) ★★★ --- */
+    /* --- ★★★ 반응형 요소 교체 (최종 수정) ★★★ --- */
     .desktop-only {
         display: none; /* 데스크톱용 요소는 모두 숨김 */
     }
-    .mobile-only {
-        display: block; /* 모바일용 요소는 모두 보여줌 */
+    
+    /* 모바일용 요소들을 데스크톱 규칙과 똑같이 구체적으로 지정해서 보여줍니다. */
+    .section-image.mobile-only,
+    .image-banner.mobile-only,
+    .image-button1.mobile-only,
+    .image-button2.mobile-only {
+        display: block;
     }
 
     /* --- 모바일 버튼 위치 재조정 --- */
